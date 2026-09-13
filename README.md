@@ -1,8 +1,8 @@
 # PixelFlow — Hand-Controlled Pixel Manipulation
 
-PixelFlow is an interactive computer vision project that combines hand tracking with real-time image manipulation.
+PixelFlow is an interactive computer vision project that combines real-time hand tracking with visual manipulation.
 
-The project uses **MediaPipe** to detect hand gestures, **OSC** to send the detected controls to **TouchDesigner**, and **GLSL** to process the image in real time.
+The project uses **MediaPipe** to detect hand gestures, **OSC** to send the detected controls from Python to **TouchDesigner**, and **GLSL** to process the image in real time.
 
 ## Features
 
@@ -11,29 +11,29 @@ The project uses **MediaPipe** to detect hand gestures, **OSC** to send the dete
 * Grayscale, Red, Green, Blue, and RGB modes
 * Hand-controlled pixel swirl effect
 * Gesture-based reset
-* Real-time communication using OSC
-* Real-time image processing with GLSL
+* Real-time OSC communication
+* GLSL-based image processing
 
 ## Interaction
 
 ### Left Hand — Color Control
 
-| Fingers | Effect       |
-| ------- | ------------ |
-| 0       | Grayscale    |
-| 1       | Red          |
-| 2       | Green        |
-| 3       | Blue         |
-| 5       | Original RGB |
+| Fingers | Effect    |
+| ------- | --------- |
+| 0       | Grayscale |
+| 1       | Red       |
+| 2       | Green     |
+| 3       | Blue      |
+| 5       | RGB       |
 
 ### Right Hand — Pixel Swirl
 
 * **Thumb + index finger angle** → Controls the pixel swirl
 * **Closed hand** → Resets the image to its original state
 
-The image itself remains fixed while the pixels are manipulated around the center, creating a localized swirl effect.
+The image remains fixed while the pixels are manipulated around the center, creating a real-time swirl effect.
 
-## How It Works
+## System Pipeline
 
 ```text
 Camera
@@ -48,17 +48,8 @@ TouchDesigner
    ↓
 GLSL
    ↓
-Real-Time Pixel Manipulation
+Real-Time Image Manipulation
 ```
-
-## Technologies
-
-* Python
-* OpenCV
-* MediaPipe
-* OSC
-* TouchDesigner
-* GLSL
 
 ## Project Structure
 
@@ -67,14 +58,25 @@ PixelFlow/
 ├── python/
 │   ├── hand_tracking.py
 │   └── config.py
+│
 ├── touchdesigner/
+│   └── PixelFlow.toe
+│
 ├── assets/
-│   └── models/
-│       └── hand_landmarker.task
+│
 ├── README.md
 └── .gitignore
 ```
 
-## About the Project
+## How to Run
 
-PixelFlow is the first stage of my **Interactive Computer Vision** project series, exploring how computer vision can be connected to real-time visual interaction and creative coding.
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/nour-said/PixelFlow-.git
+cd PixelFlow-
+```
+
+### 2. Set up the Python environment
+
+Create and activate a virtual enviro
